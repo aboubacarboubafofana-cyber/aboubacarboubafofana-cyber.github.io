@@ -1,0 +1,41 @@
+version: "3.9"
+services:
+  postgres:
+    image: pgvector/pgvector:pg16
+    environment:
+      POSTGRES_USER: nexus
+      POSTGRES_PASSWORD: nexus
+      POSTGRES_DB: nexus
+    ports: ["5432:5432"]
+    volumes: ["pgdata:/var/lib/postgresql/data"]
+
+  redis:
+    image: redis:7-alpine
+    ports: ["6379:6379"]
+
+  ollama:
+    image: ollama/ollama:latest
+    ports: ["11434:11434"]
+    volumes: ["ollama:/root/.ollama"]
+
+volumes:
+  pgdata:
+  ollama:
+  # 1. Installer pnpm + turbo
+npm i -g pnpm turbo
+
+# 2. Cloner / créer le dossier
+mkdir nexus && cd nexus
+
+# 3. Initialiser
+pnpm init
+# coller le package.json racine, pnpm-workspace.yaml, turbo.json
+
+# 4. Lancer l'infra locale
+docker compose up -d
+
+# 5. Installer dépendances
+pnpm install
+
+# 6. Démarrer
+pnpm dev

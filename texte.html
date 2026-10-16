@@ -1,0 +1,27 @@
+nexus/
+├── apps/
+│   ├── web/                # Next.js 14 (cockpit)
+│   ├── mobile/             # React Native + Expo
+│   └── api/                # FastAPI (backend + agents)
+├── packages/
+│   ├── ui/                 # composants partagés web
+│   ├── types/              # types TS partagés
+│   ├── config/             # eslint, tsconfig, tailwind
+│   └── sdk/                # client API typé
+├── agents/                 # logique LangGraph (Python)
+│   ├── orchestrator/
+│   ├── planner/
+│   ├── researcher/
+│   ├── coder/
+│   ├── tester/
+│   └── reviewer/
+├── infra/
+│   ├── docker/
+│   ├── k8s/
+│   └── terraform/
+├── .github/workflows/
+├── turbo.json
+├── package.json
+├── pnpm-workspace.yaml
+├── .env.example
+└── README.md
